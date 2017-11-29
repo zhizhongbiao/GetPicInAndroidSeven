@@ -76,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
                     PickImageUtil.cropImage(this, data.getData(), CODE_CROP_IMAGE);
                     break;
                 case CODE_TAKE_PIC:
+
+                    if (data != null) {
+                        Uri uri = data.getData();
+                        Log.e(TAG, "RESULT_OK: uri/requestCode=" + uri + "/" + requestCode);
+                    } else {
+                        Log.e(TAG, "RESULT_OK  data == null------requestCode=" + requestCode);
+                    }
                     PickImageUtil.cropImage(this, imageUri, CODE_CROP_IMAGE);
                     break;
                 case CODE_CROP_IMAGE:
