@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -142,11 +143,16 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        //给指定存储路径生成Uri  6.0方法
-        Uri imageUri = FileProvider.getUriForFile(this, "cn.com.tianyudg.getpicinandroidseven", imageFile);
 
-        //6.0  以下方法
-//        imageUri = Uri.fromFile(imageFile);
+        Uri imageUri = null;
+        if (Build.VERSION.SDK_INT >= 24) {
+            //Android 7.0 以及以上
+            imageUri = FileProvider.getUriForFile(this, "cn.com.tianyudg.getpicinandroidseven", imageFile);
+        } else {
+            //Android 7.0 以下
+            imageUri = Uri.fromFile(imageFile);
+        }
+
         LogUtils.e("imageFile=" + imageFile.getAbsolutePath().toString() + "  -----------  imageUri=" + imageUri.toString());
 
         return imageUri;
