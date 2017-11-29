@@ -165,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void pickImageFromGallery() {
         Intent intent = new Intent();
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         intent.setType("image/*");
         intent.putExtra("return-data", true);
         startActivityForResult(intent, CODE_GET_PIC);
